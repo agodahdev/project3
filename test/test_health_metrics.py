@@ -1,17 +1,19 @@
 import unittest
-from workout import Workout
+from health_metrics import HealthMetrics
 
-# Unit test for the Workout class
-class TestWorkout(unittest.TestCase):
-    def test_workout_initialization(self):
-        # Create a workout instance
-        workout = Workout("Running", 30, "medium", 300, "2024-10-15 14:00:00")
-        # Check if the attributes are set correctly
-        self.assertEqual(workout.exercise, "Running")
-        self.assertEqual(workout.duration, 30)
-        self.assertEqual(workout.intensity, "medium")
-        self.assertEqual(workout.calories_burned, 300)
-        self.assertEqual(workout.date, "2024-10-15 14:00:00")
+class TestHealthMetrics(unittest.TestCase):
+    def test_initial_health_metrics(self):
+        health = HealthMetrics()
+        self.assertEqual(health.data['weight'], 0.0)
+        self.assertEqual(health.data['body_fat'], 0.0)
+        self.assertEqual(health.data['calories_intake'], 0)
+
+    def test_update_health_metrics(self):
+        health = HealthMetrics()
+        health.update_metrics(75, 18, 2200)
+        self.assertEqual(health.data['weight'], 75)
+        self.assertEqual(health.data['body_fat'], 18)
+        self.assertEqual(health.data['calories_intake'], 2200)
 
 if __name__ == '__main__':
     unittest.main()
