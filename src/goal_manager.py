@@ -14,7 +14,7 @@ class GoalManager:
         for goal in self.goals:
             print(f"Goal: {goal['goal_type']}, Target: {goal['target_value']}")
             print(f"Current Weight: {health_metrics.data['weight']} kg")
-            # Basic progress calculation (can be expanded)
+            # Basic progress calculation
             print(f"Progress: {goal['progress']}%")
             print("Workouts contributing to progress:")
             for workout in workouts:
